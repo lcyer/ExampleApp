@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.project.huray.projecthuray.dashboard.DashViewModel"/>
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:menu="@menu/drawer_item">
+
+        <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/incDashCalender"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+            </android.support.design.widget.AppBarLayout>
+
+            <include
+                android:id="@+id/incDashCalender"
+                layout="@layout/dashboard_calender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:viewmodel="@{viewmodel}"
+                app:layout_constraintBottom_toTopOf="@+id/mainContainer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+
+            <FrameLayout
+                android:id="@+id/mainContainer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/incDashCalender"></FrameLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/draw_header"
+            app:menu="@menu/drawer_item" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+</layout>
+
+
+
+

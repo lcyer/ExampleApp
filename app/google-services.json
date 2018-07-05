@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "519117069154",
+    "firebase_url": "https://project-huray.firebaseio.com",
+    "project_id": "project-huray",
+    "storage_bucket": "project-huray.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519117069154:android:28dc6291125dd068",
+        "android_client_info": {
+          "package_name": "com.project.huray.projecthuray"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519117069154-nfvnpenghqp67644rtvk40jn4pp8upum.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAycw1NrSNzi38NNVGyIwwO4X2YE-MESAw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

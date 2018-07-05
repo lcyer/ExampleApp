@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">projecthuray</string>
+
+    <string name="atopy_photo_reg">아토피 사진 등록</string>
+    <string name="pef_info_input">최대 호기유속 입력</string>
+
+    //navigation
+    <string name="header_draw">project huray</string>
+    <string name="open_drawer">open</string>
+    <string name="close_drawer">close</string>
+
+    //Week Day Title
+    <string name="year">year</string>
+    <string name="month">month</string>
+    <string name="day">day</string>
+    <string name="monday">monday</string>
+    <string name="tuesday">tueday</string>
+    <string name="wednesday">wednesday</string>
+    <string name="thursday">thursday</string>
+    <string name="friday">friday</string>
+    <string name="saturday">saturday</string>
+    <string name="sunday">sunday</string>
+
+</resources>

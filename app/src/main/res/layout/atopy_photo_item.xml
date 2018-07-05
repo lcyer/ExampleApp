@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="view"
+            type="com.project.huray.projecthuray.dashboard.adapter.DashBoardAdapter" />
+
+        <variable
+            name="viewmodel"
+            type="com.project.huray.projecthuray.dashboard.DashItemViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvTodayAtopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:text="오늘의 아토피"
+            android:textColor="#000"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTodayAtopy">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="35dp"
+                android:background="@drawable/ic_note_add_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_check_black_24dp"
+                android:text="증상 정보 입력"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            android:onClick="@{() -> viewmodel.addAtopyPhoto()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="35dp"
+                android:background="@drawable/ic_add_box_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_check_black_24dp"
+                android:text="사진 정보 입력"
+                android:textSize="20dp"
+                android:visibility="@{viewmodel.empty ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewmodel.empty ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/ivAtopyPhotoFirst"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="30dp"
+                    app:imgRes="@{viewmodel.atopyPhotoFirst}"
+                    app:layout_constraintEnd_toStartOf="@+id/ivAtopyPhotoSecond"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/ivAtopyPhotoSecond"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    app:imgRes="@{viewmodel.atopyPhotoSecond}"
+                    app:layout_constraintEnd_toStartOf="@+id/ivAtopyPhotoThird"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ivAtopyPhotoFirst" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/ivAtopyPhotoThird"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    app:imgRes="@{viewmodel.atopyPhotoThird}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ivAtopyPhotoSecond" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
+

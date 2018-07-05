@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.project.huray.projecthuray.atopy.AtopyPhotoViewModel" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutDetailAtopyCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/layoutActivePhoto"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvAtopyDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_date_range_black_24dp"
+                android:textSize="20sp"
+                android:text="@{viewmodel.dateTitle}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2018년 6월 5일" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutActivePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/layoutDetailAtopyCalendar"
+            tools:layout_editor_absoluteX="0dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvDeletePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="삭제"
+                android:textColor="#00bfff"
+                android:onClick="@{() -> viewmodel.onDeletePhoto()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tvPhotoCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.curPhotoCnt}"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(viewmodel.photoList.size)}"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    tools:text="0"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="장"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"/>/
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvAddPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:onClick="@{() -> viewmodel.doTakeAlbum()}"
+                android:text="추가"
+                android:textColor="#00bfff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D3D3D3"
+            app:layout_constraintBottom_toTopOf="@+id/layoutShowPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/layoutActivePhoto" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutShowPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/layoutAtopySave"
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvPrevPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:onClick="@{() -> viewmodel.onPrevPhoto()}"
+                android:background="@drawable/ic_navigate_before_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvIsShowPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사진을 추가해주세요."
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivAtopyPhoto"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                app:imgRes="@{viewmodel.photo}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvNextPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:onClick="@{() -> viewmodel.onNextPhoto()}"
+                android:background="@drawable/ic_navigate_next_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutAtopySave"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="#00bfff"
+            android:onClick="@{() -> viewmodel.onPhotoSaved()}"
+            app:layout_constraintBottom_toTopOf="@+id/layoutActivePhoto"
+            app:layout_constraintTop_toBottomOf="@+id/layoutShowPhoto">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="저장"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
+
+
