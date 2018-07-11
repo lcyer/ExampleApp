@@ -49,7 +49,7 @@ abstract class InfoViewModel(
     }
 
     fun setTimePicker(hour: Int, min: Int) {
-        if (hour < 12) amTimeValue.set("${hour}:${min}") else pmTimeValue.set("${hour}:${min}")
+        if (hour < 12) amTimeValue.set("$hour:$min") else pmTimeValue.set("$hour:$min")
     }
 
     abstract fun onPefInfoSaved()

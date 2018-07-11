@@ -1,8 +1,11 @@
 package com.project.huray.projecthuray
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -18,6 +21,7 @@ import com.project.huray.projecthuray.dashboard.HubNavigator
 import com.project.huray.projecthuray.data.source.hub.HubDataRepository
 import com.project.huray.projecthuray.databinding.ActivityMainBinding
 import com.project.huray.projecthuray.util.add
+import com.project.huray.projecthuray.util.doRequestPermission
 import com.project.huray.projecthuray.util.selctedColor
 import com.project.huray.projecthuray.util.unSelected
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,6 +35,7 @@ class MainActivity : AppCompatActivity(), HubNavigator {
 
     companion object {
         const val REQUSET_MAIN_ACTIVITY = 7
+        const val PERMISSION_REQUEST_EXTERNAL_READ = 8
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +52,7 @@ class MainActivity : AppCompatActivity(), HubNavigator {
         dashViewModel.initCalendar()
 
         setDashFragment()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -83,7 +89,6 @@ class MainActivity : AppCompatActivity(), HubNavigator {
             }
         }
     }
-
 
     fun setDrawer() {
         navigationView?.run {
@@ -176,6 +181,17 @@ class MainActivity : AppCompatActivity(), HubNavigator {
 
     override fun addAtopyPhoto() {
         startActivityForResult(Intent(this, AtopyPhotoActivity::class.java), REQUSET_MAIN_ACTIVITY)
+    }
+
+    //permission
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSION_REQUEST_EXTERNAL_READ -> dashViewModel.onLoadDashItem()
+        }
     }
 
 }

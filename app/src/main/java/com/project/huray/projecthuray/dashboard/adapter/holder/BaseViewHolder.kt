@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 
 abstract class BaseViewHolder<in ITEM : Any?>(val parent: ViewGroup?, val view: View) :
-    RecyclerView.ViewHolder(view) {
+    RecyclerView.ViewHolder(view){
 
 //    fun onBindViewHolder(item: Any?) {
 //        //need to try catch..

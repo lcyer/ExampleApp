@@ -1,6 +1,7 @@
 package com.project.huray.projecthuray.atopy
 
 import android.databinding.*
+import android.util.SparseArray
 import com.project.huray.projecthuray.BR
 import com.project.huray.projecthuray.data.source.hub.HubDataRepository
 import com.project.huray.projecthuray.util.fixDatetoKor
@@ -16,6 +17,9 @@ abstract class PhotoViewModel(
     val photo: ObservableField<String> = ObservableField()
     val photoMapList = mutableMapOf<Int, String?>()
 
+    /**
+     * todo list
+     **/
     fun onLoadPhoto() {
         photoList.clear()
         photoMapList.clear()
@@ -64,12 +68,13 @@ abstract class PhotoViewModel(
     }
 
     fun onDeletePhoto() {
+        //val s = SparseArray<String>()
         photoMapList.clear()
         photoList.removeAt(photoCnt - 1)
         for ((index, value) in photoList.withIndex()) {
             photoMapList.set(index + 1, value)
         }
-        photoCnt.takeIf { it != 1 }?.apply { photoCnt-- }
+        photoCnt.takeIf { it > 1 }?.apply { photoCnt-- }
         photo.set(photoMapList.get(photoCnt))
         notifyPropertyChanged(BR.curPhotoCnt)
     }

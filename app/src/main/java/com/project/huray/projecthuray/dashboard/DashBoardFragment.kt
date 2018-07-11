@@ -2,12 +2,14 @@ package com.project.huray.projecthuray.dashboard
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.project.huray.projecthuray.MainActivity
 import com.project.huray.projecthuray.R
 import com.project.huray.projecthuray.dashboard.adapter.DashBoardAdapter
+import com.project.huray.projecthuray.util.doRequestPermission
 import kotlinx.android.synthetic.main.fragment_dash.*
 
 class DashBoardFragment() : Fragment() {
@@ -37,6 +39,8 @@ class DashBoardFragment() : Fragment() {
             adapter = dashBoardAdapter
         }
         dashViewModel.dashAdapterModel = dashBoardAdapter
+
+        (activity as MainActivity).doRequestPermission()
         dashViewModel.onLoadDashItem()
     }
 
